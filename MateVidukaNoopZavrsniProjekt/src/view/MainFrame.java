@@ -1,19 +1,22 @@
 package view;
 
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import javax.swing.JMenu;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-import model.User;
-
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+import model.Brod;
+import model.User;
 
 public class MainFrame extends JFrame {
 	private JLabel lblDobrodosli;
@@ -26,8 +29,10 @@ public class MainFrame extends JFrame {
 	ImageIcon imageBrodRemove = new ImageIcon("icons/removeBoat.png");
 	ImageIcon imageCalendar = new ImageIcon("icons/calendar.png");
 	ImageIcon imageExit = new ImageIcon("icons/exit.png");
-	
+
 	public static User currentUser;
+
+	public static ArrayList<Brod> listaBrodova = new ArrayList<>();
 
 	private JButton btnUkloniBrod;
 	private JButton btnPregledajKalendar;
@@ -37,6 +42,7 @@ public class MainFrame extends JFrame {
 
 		createComponents();
 		getCurrentUser();
+		activateElements();
 		setVisible(true);
 
 	}
@@ -90,10 +96,48 @@ public class MainFrame extends JFrame {
 		mainPanel.add(btnIzlaz);
 
 	}
-	
-	private void getCurrentUser(){
-		
+
+	private void getCurrentUser() {
+
 		lblDobrodosli.setText("Dobrodošli " + currentUser.getUsername());
-		
+
+	}
+
+	private void activateElements() {
+
+		btnDodajBrod.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				java.awt.EventQueue.invokeLater(new Runnable() {
+					public void run() {
+
+						new addBoat().setVisible(true);
+						dispose();
+
+					}
+				});
+
+			}
+		});
+
+		btnUkloniBrod.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				java.awt.EventQueue.invokeLater(new Runnable() {
+					public void run() {
+
+						new removeBoat().setVisible(true);
+						dispose();
+
+					}
+				});
+			}
+		});
+
 	}
 }
