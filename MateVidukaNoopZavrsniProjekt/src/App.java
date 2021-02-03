@@ -1,7 +1,7 @@
-import controller.DatabaseHandler;
+import view.Calendar;
 import view.LoginFrame;
-import view.MainFrame;
-import view.removeBoat;
+import view.Ponuda;
+import view.UserMainFrame;
 
 public class App {
 
@@ -9,8 +9,11 @@ public class App {
 
 		// MainFrame mf = new MainFrame();
 		// DatabaseHandler handler = new DatabaseHandler();
-		   LoginFrame lf = new LoginFrame();
+		//LoginFrame lf = new LoginFrame();
 		
-	}
+		//Calendar c = new Calendar();
 
+		Ponuda p = new Ponuda();
+		//UserMainFrame umf = new UserMainFrame();
+	}
 }

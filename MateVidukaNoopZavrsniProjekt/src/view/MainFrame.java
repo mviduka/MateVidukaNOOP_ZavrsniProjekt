@@ -138,6 +138,24 @@ public class MainFrame extends JFrame {
 				});
 			}
 		});
+		
+		btnPregledajKalendar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				
+				java.awt.EventQueue.invokeLater(new Runnable() {
+					public void run() {
+
+						new Calendar().setVisible(true);
+						dispose();
+
+					}
+				});
+			}
+		});
 
 	}
 }

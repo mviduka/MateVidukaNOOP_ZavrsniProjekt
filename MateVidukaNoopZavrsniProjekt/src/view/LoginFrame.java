@@ -23,7 +23,7 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 
 public class LoginFrame extends JFrame {
-	
+
 	private JTextField txtFIeldUsername;
 	private JButton btnPrijaviSe;
 	private JButton btnRegistrirajSe;
@@ -127,14 +127,49 @@ public class LoginFrame extends JFrame {
 
 							}
 						});
-					}else {
-						
-						JOptionPane.showMessageDialog(null, "Unjeli ste pogrešni username ili password", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
+
+						JOptionPane.showMessageDialog(null, "Unjeli ste pogrešni username ili password", "Error",
+								JOptionPane.ERROR_MESSAGE);
 					}
 
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+
+			}
+		});
+
+		btnRegistrirajSe.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				String username = txtFIeldUsername.getText();
+				String password = passwordField.getText();
+
+				if (username.isEmpty() || password.isEmpty()) {
+
+					JOptionPane.showMessageDialog(null, "Please fill in all fields", "Error",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+
+				}
+
+				String st = "INSERT INTO users VALUES (" + "'" + username + "'," + "'" + password + "'," + "'" + "user"
+						+ "'," + "" + null + "" + ")";
+
+				System.out.println(st);
+
+				if (handler.execAction(st)) {
+
+					JOptionPane.showMessageDialog(null, "Succes");
+
+				} else {
+					JOptionPane.showMessageDialog(null, "Failed", "Error", JOptionPane.ERROR_MESSAGE);
+
 				}
 
 			}
