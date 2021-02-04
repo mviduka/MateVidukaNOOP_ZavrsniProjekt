@@ -102,40 +102,84 @@ public class LoginFrame extends JFrame {
 				String username = txtFIeldUsername.getText();
 				String password = passwordField.getText();
 
-				String qu = "SELECT * FROM users WHERE USERNAME=? and PASSWORD=? and TYPE=?";
-				PreparedStatement pst;
-				try {
-					pst = handler.conn.prepareStatement(qu);
-					pst.setString(1, username);
-					pst.setString(2, password);
-					pst.setString(3, "admin");
+				if (username.equals("admin")) {
 
-					ResultSet rs = pst.executeQuery();
+					String qu = "SELECT * FROM users WHERE USERNAME=? and PASSWORD=? and TYPE=?";
+					PreparedStatement pst;
+					try {
 
-					if (rs.next()) {
-						System.out.println(rs.getString("USERNAME"));
-						System.out.println(rs.getString("PASSWORD"));
+						pst = handler.conn.prepareStatement(qu);
+						pst.setString(1, username);
+						pst.setString(2, password);
+						pst.setString(3, "admin");
 
-						User user = new User(rs.getString("USERNAME"), rs.getString("PASSWORD"));
-						MainFrame.currentUser = user;
+						ResultSet rs = pst.executeQuery();
 
-						java.awt.EventQueue.invokeLater(new Runnable() {
-							public void run() {
+						if (rs.next()) {
+							System.out.println(rs.getString("USERNAME"));
+							System.out.println(rs.getString("PASSWORD"));
 
-								new MainFrame().setVisible(true);
-								dispose();
+							User user = new User(rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getInt("Id"));
+							MainFrame.currentUser = user;
 
-							}
-						});
-					} else {
+							java.awt.EventQueue.invokeLater(new Runnable() {
+								public void run() {
 
-						JOptionPane.showMessageDialog(null, "Unjeli ste pogrešni username ili password", "Error",
-								JOptionPane.ERROR_MESSAGE);
+									new MainFrame().setVisible(true);
+									dispose();
+
+								}
+							});
+						} else {
+
+							JOptionPane.showMessageDialog(null, "Unjeli ste pogrešni username ili password", "Error",
+									JOptionPane.ERROR_MESSAGE);
+						}
+
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
 
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} else {
+
+					String qu = "SELECT * FROM users WHERE USERNAME=? and PASSWORD=? and TYPE=?";
+					PreparedStatement pst;
+					try {
+
+						pst = handler.conn.prepareStatement(qu);
+						pst.setString(1, username);
+						pst.setString(2, password);
+						pst.setString(3, "user");
+
+						ResultSet rs = pst.executeQuery();
+
+						if (rs.next()) {
+							System.out.println(rs.getString("USERNAME"));
+							System.out.println(rs.getString("PASSWORD"));
+
+							User user = new User(rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getInt("Id"));
+							UserMainFrame.currentUser = user;
+
+							java.awt.EventQueue.invokeLater(new Runnable() {
+								public void run() {
+
+									new UserMainFrame().setVisible(true);
+									dispose();
+
+								}
+							});
+						} else {
+
+							JOptionPane.showMessageDialog(null, "Unjeli ste pogrešni username ili password", "Error",
+									JOptionPane.ERROR_MESSAGE);
+						}
+
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
 				}
 
 			}

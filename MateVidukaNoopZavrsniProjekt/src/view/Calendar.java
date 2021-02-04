@@ -3,6 +3,9 @@ package view;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -41,6 +44,10 @@ public class Calendar extends JFrame {
 		
 		calendar = new JCalendar();
 		calendar.setBounds(10, 59, 964, 691);
+		Date najranijiDatum = parseDate("2021-02-01");
+		Date najkasnijiDatum = parseDate("2021-02-28");
+		
+		calendar.setSelectableDateRange(najranijiDatum, najkasnijiDatum);
 		mainPanel.add(calendar);
 		
 		accesCalendar();
@@ -66,4 +73,13 @@ public class Calendar extends JFrame {
 			
 		}
 	}
+	
+	 public static Date parseDate(String date) {
+	     try {
+	         return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+	     } catch (ParseException e) {
+	         return null;
+	     }
+	  }
+
 }

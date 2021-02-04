@@ -193,7 +193,7 @@ public class addBoat extends JFrame {
 
 				String qu = "INSERT INTO brodovi VALUES (" + "'" + imeBroda + "'," + "'" + godisteBroda + "'," + "'"
 						+ duzinaBroda + "'," + "'" + vrstaBroda + "'," + "'" + kapacitetBroda + "'," + "'"
-						+ cijenaPoDanu + "'," + "'" + slikaBroda + "'," + "" + null + "" + ")";
+						+ cijenaPoDanu + "'," + "'" + slikaBroda + "'," + "" + null + "," + "" + true + ""  + ")";
 
 				if (handler.execAction(qu)) {
 

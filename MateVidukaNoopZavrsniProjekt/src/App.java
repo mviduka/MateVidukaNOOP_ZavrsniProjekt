@@ -2,6 +2,7 @@ import view.Calendar;
 import view.LoginFrame;
 import view.Ponuda;
 import view.UserMainFrame;
+import view.myReservations;
 
 public class App {
 
@@ -13,7 +14,9 @@ public class App {
 		
 		//Calendar c = new Calendar();
 
-		Ponuda p = new Ponuda();
+		//Ponuda p = new Ponuda();
 		//UserMainFrame umf = new UserMainFrame();
+		
+		myReservations res = new myReservations();
 	}
 }
