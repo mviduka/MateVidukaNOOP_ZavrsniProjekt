@@ -10,13 +10,13 @@ public class App {
 
 		// MainFrame mf = new MainFrame();
 		// DatabaseHandler handler = new DatabaseHandler();
-		//LoginFrame lf = new LoginFrame();
+		LoginFrame lf = new LoginFrame();
 		
 		//Calendar c = new Calendar();
 
 		//Ponuda p = new Ponuda();
 		//UserMainFrame umf = new UserMainFrame();
 		
-		myReservations res = new myReservations();
+		//myReservations res = new myReservations();
 	}
 }

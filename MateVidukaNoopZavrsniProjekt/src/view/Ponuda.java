@@ -61,12 +61,12 @@ public class Ponuda extends JFrame {
 	private void createElements() {
 		// TODO Auto-generated method stub
 
-		setSize(1020, 529);
+		setSize(1300, 529);
 		getContentPane().setLayout(null);
 		setResizable(false);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 1008, 495);
+		panel.setBounds(0, 0, 1284, 495);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -126,24 +126,24 @@ public class Ponuda extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(410, 42, 588, 205);
+		scrollPane.setBounds(410, 42, 864, 205);
 		panel.add(scrollPane);
 
 		list = new JTable();
 		scrollPane.setViewportView(list);
 
 		lblZaSLikuBroda = new JLabel("");
-		lblZaSLikuBroda.setBounds(423, 269, 277, 179);
+		lblZaSLikuBroda.setBounds(423, 269, 436, 215);
 		panel.add(lblZaSLikuBroda);
 
 		btnOdaberi = new JButton("Odaberi", imageSelect);
 		btnOdaberi.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnOdaberi.setBounds(719, 269, 279, 59);
+		btnOdaberi.setBounds(881, 258, 279, 59);
 		panel.add(btnOdaberi);
 
 		btnIzadi = new JButton("Izadi", imageExit);
 		btnIzadi.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnIzadi.setBounds(719, 382, 279, 59);
+		btnIzadi.setBounds(881, 375, 279, 59);
 		panel.add(btnIzadi);
 
 	}

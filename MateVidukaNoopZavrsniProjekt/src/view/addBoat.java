@@ -174,7 +174,10 @@ public class addBoat extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				// TODO Auto-generated method stub
+				
+				handler = DatabaseHandler.getInstance();
 
 				String slikaBroda = "slikeBrodova/" + file;
 				String imeBroda = txtFieldImeBroda.getText();

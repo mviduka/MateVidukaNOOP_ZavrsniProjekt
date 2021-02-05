@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class DatabaseHandler {
 
 	private String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
-	String url = "jdbc:mysql://mysql5025.site4now.net/db_a6ecdc_users?autoReconnect=true";
+	String url = "jdbc:mysql://mysql5025.site4now.net/db_a6ecdc_users?autoRecconect=true";
 	String username = "a6ecdc_users";
 	String password = "mate2120";
 

@@ -111,5 +111,16 @@ public class UserMainFrame extends JFrame {
 				
 			}
 		});
+		btnIzlaz.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				System.exit(1);
+				System.out.println("Shutdown by user");
+				
+			}
+		});
 	}
 }

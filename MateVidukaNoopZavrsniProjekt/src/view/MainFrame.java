@@ -122,6 +122,17 @@ public class MainFrame extends JFrame {
 
 			}
 		});
+		btnIzlaz.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				System.exit(0);
+				System.out.println("Shutdown by admin");
+				
+			}
+		});
 
 		btnUkloniBrod.addActionListener(new ActionListener() {
 

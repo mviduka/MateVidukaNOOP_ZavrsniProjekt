@@ -137,7 +137,7 @@ public class myReservations extends JFrame {
 
 			String query = "select * from rezervacije where usersId=?";
 			PreparedStatement pst = databaseHandler.conn.prepareStatement(query);
-			pst.setInt(1, 2);
+			pst.setInt(1, UserMainFrame.currentUser.getId());
 
 			ResultSet rs = pst.executeQuery();
 
