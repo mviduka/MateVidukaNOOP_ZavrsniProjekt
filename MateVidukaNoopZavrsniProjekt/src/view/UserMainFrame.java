@@ -15,6 +15,10 @@ import model.User;
 
 import java.awt.Color;
 
+
+/**
+ * Glavni dio programa za korisnika preko kojeg korisnik moze pregledati ponudu, pregledati svoje rezervacije i ugasiti program.
+ */
 public class UserMainFrame extends JFrame {
 
 	private JLabel lblDobrodosli;
@@ -29,6 +33,7 @@ public class UserMainFrame extends JFrame {
 
 	public static User currentUser;
 
+
 	public UserMainFrame() {
 
 		createComponents();
@@ -36,6 +41,10 @@ public class UserMainFrame extends JFrame {
 		setVisible(true);
 
 	}
+	
+	/**
+	 * Metoda koja kreira sve komponente GUI-a.
+	 */
 
 	private void createComponents() {
 
@@ -73,6 +82,16 @@ public class UserMainFrame extends JFrame {
 		panel.add(btnIzlaz);
 
 	}
+	
+	/**
+	 * Metoda koja dodaje ActionListenere na JButtone.
+	 * 
+	 * bntPregledajPonudu -> otvara Ponudu i gasi trenutni prozor.
+	 * 
+	 * btnMojeRezervacije -> otvara myReservations i gasi trentuni prozor.
+	 * 
+	 * btnIzadi -> gasi aplikaciju i ispisuje da je korisnik ugasio aplikaciju.
+	 */
 
 	private void activateElements() {
 

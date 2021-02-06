@@ -1,6 +1,15 @@
 package model;
 
 import javax.swing.ImageIcon;
+/**
+ * 
+ * 
+ * Klasa Brod je model za Brod, podatci koji se nalaze u bazi podataka u tablici brod odgovaraju poljima koje
+ * ima klasa Brod, tako da kada podatke o brodu izvlacimo iz baze, imamo ih gdje pospremiti. Novi brod dodaje se
+ * u listu brodova.
+ * @author Mate
+ *
+ */
 
 public class Brod {
 

@@ -31,6 +31,11 @@ import com.toedter.calendar.JCalendar;
 
 import controller.DatabaseHandler;
 
+
+/**
+ * Klasa myReservation vrlo je slicna klasi Calendar samo je ovo prikaz za korisnika i prikazuje iskljucivo svoje rezervacije
+ * na nacin da na dan koji je JButton postavlja sliku broda koji je rezerviran.
+ */
 public class myReservations extends JFrame {
 
 	private JCalendar calendar;
@@ -38,6 +43,8 @@ public class myReservations extends JFrame {
 	List<JButton> list = new ArrayList<>();
 	private JButton btnIzadi;
 	private DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+	
+	
 
 	public myReservations() {
 
@@ -47,6 +54,10 @@ public class myReservations extends JFrame {
 		setVisible(true);
 
 	}
+	
+	/**
+	 * Metoda koja kreira komponente GUI-a.
+	 */
 
 	private void createComponents() {
 		// TODO Auto-generated method stub
@@ -82,6 +93,12 @@ public class myReservations extends JFrame {
 		accesCalendar();
 
 	}
+	
+	/**
+	 * Metoda koja sve komponente s JCalendara sprema u jednu listu, kasnije provjerava koji su elementi 
+	 * u listi JBottuni koji na kalendaru predstavljaju dane, for petljom izbacujemo sve elemente iz liste
+	 * koji nisu dani na kalendaru.
+	 */
 
 	private void accesCalendar() {
 		// TODO Auto-generated method stub
@@ -110,6 +127,11 @@ public class myReservations extends JFrame {
 		System.out.println(list.size());
 	}
 
+	/**
+	 * Dodajemo ActionListener na JButton
+	 * 
+	 * btnIzadi -> Otvara UserMainFrame i dispose() na trenutnom prozoru.
+	 */
 	private void activateElements() {
 
 		btnIzadi.addActionListener(new ActionListener() {
@@ -130,6 +152,13 @@ public class myReservations extends JFrame {
 			}
 		});
 	}
+	
+
+	/**
+	 * Metoda kojo iz baze podatak iz tablice rezervacije dobivamo sve rezervacije trenutno korisnika.
+	 * I na svaki dan koji je rezerviran postavljamo sliku broda koji je rezerviran i postavljamo 
+	 * bottun kao disabled (JButton.setEnabled(false))
+	 */
 
 	private void showReserved() {
 
@@ -185,6 +214,12 @@ public class myReservations extends JFrame {
 		}
 
 	}
+	
+	/**
+	 * Metoda kojom kreiramo Date jednostavnog yyyy-MM-dd formata
+	 * @param date
+	 * 
+	 */
 
 	public static Date parseDate(String date) {
 		try {

@@ -16,6 +16,12 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+
+/**
+ * Klasa removeBoat sluzi za uklanjanje brodove iz baze podataka
+ * iz tablice brodovi. kada se pokrene u JComboBox ucitaju se svi brodovi iz baze,
+ * odabirom na jedng i pritskom na gumb ukloni, taj se brod uklanja iz baze.
+ */
 public class removeBoat extends JFrame {
 
 	private JComboBox brodoviComboBox;
@@ -27,6 +33,7 @@ public class removeBoat extends JFrame {
 
 	DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
 
+
 	public removeBoat() {
 
 		createElements();
@@ -36,6 +43,10 @@ public class removeBoat extends JFrame {
 		getData();
 
 	}
+	
+	/**
+	 * Metoda koja kreira sve komponente GUI-a
+	 */
 
 	private void createElements() {
 		// TODO Auto-generated method stub
@@ -61,6 +72,10 @@ public class removeBoat extends JFrame {
 
 	}
 
+	
+	/**
+	 * Metoda koja popunjava JComboBox s imenima brodova koji se nalaze u bazi.
+	 */
 	private void getData() {
 
 		PreparedStatement pst;
@@ -79,6 +94,14 @@ public class removeBoat extends JFrame {
 		}
 
 	}
+	
+	/**
+	 * Metoda koja dodaje ActionListenere na JButtone
+	 * 
+	 * btnUkloni -> izvrsava query da izbrise sve brodove u bazi kojima je ime i povlaci ime s JComboBoxa
+	 * 
+	 * btnOdustani -> Pokrece MainFrame za admina i gasi trenutni prozor.
+	 */
 
 	private void activateElements() {
 

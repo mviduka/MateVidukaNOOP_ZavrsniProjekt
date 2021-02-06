@@ -18,6 +18,12 @@ import javax.swing.SwingConstants;
 import model.Brod;
 import model.User;
 
+/**
+ * MainFrame glavni je prozor adminskog dijela programa. preko njega mozemo uci u addBoat, removeBoat,Calendar i mozemo izaci
+ * iz aplikacije, u addBoat dodajemo nove brodove u bazu podataka, removeBoat brisemo odabrani brod iz baze podataka i 
+ * preko Calendara gledamo rezervacije za trazenog korisnika.
+ */
+
 public class MainFrame extends JFrame {
 	private JLabel lblDobrodosli;
 	private JMenu mnFile;
@@ -37,6 +43,7 @@ public class MainFrame extends JFrame {
 	private JButton btnUkloniBrod;
 	private JButton btnPregledajKalendar;
 	private JButton btnIzlaz;
+	
 
 	public MainFrame() {
 
@@ -46,6 +53,10 @@ public class MainFrame extends JFrame {
 		setVisible(true);
 
 	}
+	
+	/**
+	 * Kreiramo komponente GUI-a
+	 */
 
 	private void createComponents() {
 
@@ -96,12 +107,27 @@ public class MainFrame extends JFrame {
 		mainPanel.add(btnIzlaz);
 
 	}
+	
+	/**
+	 * Metoda kojom na lblDobrodosli postavljamo tekst "Dobrodsli " + username trenutnog korisnika, koji ce 
+	 * u ovom slucaju uvijek biti admin.
+	 */
 
 	private void getCurrentUser() {
 
 		lblDobrodosli.setText("Dobrodošli " + currentUser.getUsername());
 
 	}
+	
+	/**
+	 * Postavljamo actionListenere na JBottune.
+	 * 
+	 * bntDodajBrod -> Pokrece JFrame addBoat i radi dispose() na trenutnom prozoru.
+	 * 
+	 * btnUkloniBroad -> Pokrece JFrame removeBoat i radi dispose() na trenutno prozoru.
+	 * 
+	 * btnIzlaz -> gasi aplikaciju i ispisuje da ju je admin ugasio.
+	 */
 
 	private void activateElements() {
 

@@ -18,6 +18,15 @@ import javax.swing.SwingConstants;
 
 import controller.DatabaseHandler;
 
+
+/**
+ * 
+ * Klasa addBoat jedan je od frameova kojem može pristupiti iskljucivo User s adminskim privilegijama. Kada se kreira novi objekt addBoat,
+ * dobijamo frame koji je zaduzen za unošenje podataka u bazu u tablicu brodovi, popunimo sva tražena polja s informacijama o brodu i pritiskom
+ * na tipku spremi, ukoliko su svi podatci ispunjeni brod se sprema u bazi i postaje vidljiv za korisnika.
+ * @author Mate 
+ */
+
 public class addBoat extends JFrame {
 	private JTextField txtFieldImeBroda;
 	private JTextField textFieldGodisteBroda;
@@ -38,6 +47,7 @@ public class addBoat extends JFrame {
 	DatabaseHandler handler = DatabaseHandler.getInstance();
 
 	String file = null;
+	
 
 	public addBoat() {
 
@@ -46,6 +56,10 @@ public class addBoat extends JFrame {
 
 	}
 
+	/**
+	 * Metoda zaduzena za kreiranje svi komponenti GUI-a, GUI odraden preko
+	 * window buildera
+	 */
 	private void createComponents() {
 		// TODO Auto-generated method stub
 
@@ -152,6 +166,19 @@ public class addBoat extends JFrame {
 		getContentPane().add(btnOdustani);
 
 	}
+	
+	/**
+	 * Metoda u kojoj na zeljene botune koji se nalaze na GUI-u stavljamo ActionListenere.
+	 * 
+	 * btnOaberiSliku -> Njegovim pritiskom otvara se file dialog preko kojeg biramo sliku koju zelimo dodjeliti brodu
+	 * zbog jednostavnosti i prikaza slika na svakom racunalu, sliku koju zelimo dodjeliti brodu treba prvo spremiti u 
+	 * folder slikeBrodova koji se nalazi u projektu.
+	 * 
+	 * btnSpremi -> provjerava da li su popunjena sva polja i da li je odabrana slika, ukoliko jest podaci se zapisuju u 
+	 * bazu podataka, ukoliko nije dobijamo JOptionPane.showMessageDialog() s pogreškom
+	 * 
+	 * bntOdustani -> gasi trenutni prozor i otvara MainFrame za Usera s administratrskim ovlastima
+	 */
 
 	private void activateElements() {
 

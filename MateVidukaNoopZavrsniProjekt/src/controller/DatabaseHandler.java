@@ -8,6 +8,16 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+/**
+ * 
+ * DatabaseHandler je klasa zaduzena za povezivanje na bazu putem @url, @username, @password.
+ * Prilikom izrade DatabaseHandlera koristim pattern Singleton, tako da uvijek isti objekt DatabaseHandlera se proteze kroz cijeli
+ * projekt umjesto da se na svakom Frameu stvara novi objekt. Spajamo se na udaljenu mySQL bazu	koju sam na mjesec dana kreirao na SmarterASP.net
+ * 
+ * @author Mate
+ *
+ */
+
 public class DatabaseHandler {
 
 	private String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
@@ -24,6 +34,10 @@ public class DatabaseHandler {
 
 		connectToDatabase();
 	}
+	
+	/**
+	 * Metoda kojom se spajamo na bazu
+	 */
 
 	private void connectToDatabase() {
 
@@ -37,6 +51,15 @@ public class DatabaseHandler {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Glavna metoda da bi Singleton funkcionirao, kada se pozove
+	 * provjerava se da li vec postoji handler, ondnosno da li je trenutni null, 
+	 * ako je, stvara se novi objekt koji ce se dodjeliti svim Frameovima, ukoliko nije null
+	 * vraca se postojeci handler
+	 * 
+	 * @return handler
+	 */
 
 	public static DatabaseHandler getInstance() {
 

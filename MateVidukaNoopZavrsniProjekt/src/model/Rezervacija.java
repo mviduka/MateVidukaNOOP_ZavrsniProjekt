@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * Klasa rezervacija služi nam da bi iz baze podataka iz tablice rezervacije mogli izvuci podatke
+ * prilikom izvlacenja podataka kreira se nova Rezervacija i dodaje u listu rezervacija. Tako da za 
+ * svakog korisnika možemo vidjeti koji brod je rezervirao i od kada do kada
+ * @author Mate
+ *
+ */
 public class Rezervacija {
 	
 	public int usersId;

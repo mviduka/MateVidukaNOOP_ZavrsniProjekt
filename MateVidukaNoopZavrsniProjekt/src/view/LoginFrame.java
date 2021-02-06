@@ -1,4 +1,4 @@
-package view;
+ 		package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,6 +22,14 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 
+
+/**
+ * Klasa koja je zaduzena za Login korisnika odnosno Usera. Preko nje pokrecemo cijeli program. 
+ * Prilikom logina provjeravamo uvjet, da li je username == admin, ukoliko je usporedujemo u bazi podataka
+ * zapise s usertype admin, jer imamo samo jednog admina. Ukoliko je useranem bilo sto drugo znaci da neki
+ * od korisnika pokusava pristupiti bazi i onda je userytpe == user
+ * @author Mate
+ */
 public class LoginFrame extends JFrame {
 
 	private JTextField txtFIeldUsername;
@@ -33,6 +41,8 @@ public class LoginFrame extends JFrame {
 	ImageIcon imageRegister = new ImageIcon("icons/register.png");
 
 	DatabaseHandler handler = DatabaseHandler.getInstance();
+	
+
 
 	public LoginFrame() {
 
@@ -40,6 +50,9 @@ public class LoginFrame extends JFrame {
 		setVisible(true);
 		activateElements();
 	}
+	/**
+	 * Metoda kojom se kreiraju sve komponente GUI-a.
+	 */
 
 	private void createComponents() {
 
@@ -90,6 +103,16 @@ public class LoginFrame extends JFrame {
 		panel.add(passwordField);
 
 	}
+	
+	/**
+	 * Metoda kojom postavljamo ActionListenere na JBottune
+	 * 
+	 * btnPrijaviSe -> gleda uvjet da li je username == "admin" ukoliko je pokusavamo se u aplikaciju logirati 
+	 * kao admin, ukoliko nije znaci da se bilo koji od korisnika zeli prijaviti i onda se usertype postavlja u user
+	 * 
+	 * bntRegistrirajSe -> s txtFieldova izvlaci podatke (username i password) i kao novi zapis(novi korsinik) pohranjuje
+	 * u bazu podataka u tablicu users.
+	 */
 
 	private void activateElements() {
 

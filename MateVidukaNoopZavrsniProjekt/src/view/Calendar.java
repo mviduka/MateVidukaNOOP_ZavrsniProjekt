@@ -27,7 +27,18 @@ import controller.DatabaseHandler;
 import model.Rezervacija;
 import javax.swing.JComboBox;
 
+/**
+ * Klasa Calendar sastoji se od JCalendara, JComboBoxa i dva JButtona. Glavni zadatak Calendara je da se iz baze povuku
+ * sve rezervacije i onda spremaju u listu rezervacija, preko usersId-a dolazimo do usernamea od svakog usera koji je napravio
+ * rezervaciju i sva korisnicka imena spremamo u JComboBox, onda admin iz tog comboBoxa odabire za kojeg korisnika
+ * zeli pregledati kalendar. Pritiskom na gumb odaberi, u JCalendaru svi dani kada je korisnik rezervirao postajua neaktivni (setEnabled(False)) 
+ * i na svaki dan se postavlja String korisnik je rezervirao brod + imeBroda...
+ * @author Mate
+ *
+ */
+
 public class Calendar extends JFrame {
+
 	private JCalendar calendar;
 	private JButton btnIzlaz;
 	private JButton showText;
@@ -48,6 +59,15 @@ public class Calendar extends JFrame {
 		showReserved();
 
 	}
+	
+	/**
+	 * Metoda kojom na JBottune dodajemo ActionListenere
+	 * 
+	 * bntIzlaz -> stvara novi MainFrame za korisnika s administratorskim ovlastima.
+	 * 
+	 * bntOdaberi -> Gleda kojeg usera smo odabrali iz JComboBoxa i onda pronalazi njegov Id,
+	 * preko Ida dolazi do svih rezervacija tog korisnika i prikazuje ih u JCallendaru
+	 */
 
 	private void activateElements() {
 		// TODO Auto-generated method stub
@@ -137,6 +157,10 @@ public class Calendar extends JFrame {
 		});
 
 	}
+	
+	/**
+	 * Metoda koja kreira sve komponente GUI-a
+	 */
 
 	private void createComponents() {
 		// TODO Auto-generated method stub
@@ -181,6 +205,12 @@ public class Calendar extends JFrame {
 		accesCalendar();
 
 	}
+	
+	/**
+	 * Metoda koja sve komponente s JCalendara sprema u jednu listu, kasnije provjerava koji su elementi 
+	 * u listi JBottuni koji na kalendaru predstavljaju dane, for petljom izbacujemo sve elemente iz liste
+	 * koji nisu dani na kalendaru.
+	 */
 
 	private void accesCalendar() {
 		// TODO Auto-generated method stub
@@ -209,6 +239,10 @@ public class Calendar extends JFrame {
 		System.out.println(list.size());
 	}
 
+	/**
+	 * Metoda showReserved forEach petljom prolazimo kroz listu rezervacija i dolazimo do usernamea korisnika
+	 * preko usersId-a kojeg smo dobili iz rezervacije.
+	 */
 	private void showReserved() {
 
 		for (Rezervacija res : listaRezervacija) {
@@ -236,6 +270,10 @@ public class Calendar extends JFrame {
 		}
 
 	}
+	
+	/**
+	 * Metoda kojom iz baze dohvacamo sve rezervacije.
+	 */
 
 	private void getAllReservations() {
 
@@ -269,12 +307,17 @@ public class Calendar extends JFrame {
 
 	}
 
+	/**
+	 * Metoda koja postavlja JBottune koji predstavljaju dane na kalendaru 
+	 * u Defaultno stanje, tako da kada admin promijeni usera za kojeg zeli vidjeti 
+	 * rezervacije, prikazuju mu se samo rezervacije tog korisnika.
+	 */
 	private void setToDefault() {
 
 		int cnt = 1;
 		for (Iterator<JButton> iterator = list.iterator(); iterator.hasNext();) {
 			JButton value = iterator.next();
-			
+
 			value.setEnabled(true);
 			value.setText(String.valueOf(cnt));
 			cnt++;
@@ -282,6 +325,11 @@ public class Calendar extends JFrame {
 
 	}
 
+	/**
+	 * Metoda kojom kreiramo Date jednostavnog yyyy-MM-dd formata
+	 * @param date
+	 * 
+	 */
 	public static Date parseDate(String date) {
 		try {
 			return new SimpleDateFormat("yyyy-MM-dd").parse(date);

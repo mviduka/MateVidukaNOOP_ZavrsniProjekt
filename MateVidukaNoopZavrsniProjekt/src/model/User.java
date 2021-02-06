@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * Klasa User sluzi nam da bi preko logina izveli provjeru s bazom podataka. Ukoliko korisnik postoji u bazi
+ * kreiramo novog Usera i preko njegovih polja na frameovima postavljamo username, odnosno id.
+ * @author Mate
+ *
+ */
+
 public class User {
 
 	String username;

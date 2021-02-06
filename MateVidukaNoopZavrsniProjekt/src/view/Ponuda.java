@@ -26,6 +26,13 @@ import com.toedter.calendar.JDateChooser;
 import controller.DatabaseHandler;
 import net.proteanit.sql.DbUtils;
 
+/**
+ * Klasa Ponuda vidljiva je samo korisnicima, kada se kreira korisnik ima mogucnost viditi sve dostupne brodove
+ * i njihove fotografije. Odabire brod pritiskom na tipku odaberi, upisuje svoje ime i prezime. Podatak koji
+ * mu je username aplikacija sama odraduje. Još nedostaje unjeti datumPocetka i datumPovratka. kada je sve uneseno
+ * pritiskom na gumb rezerviraj podatci o rezervaciji spremaju se u bazu u tablicu rezervacija a brod koji je rezerviran,
+ * njegova dostupnost se updatea u tablici brodovi u false.
+ */
 public class Ponuda extends JFrame {
 
 	private JTextField textFieldImeIprezime;
@@ -48,6 +55,8 @@ public class Ponuda extends JFrame {
 	ImageIcon imageReserve = new ImageIcon("icons/reserve.png");
 
 	private ResultSet rs;
+	
+
 
 	public Ponuda() {
 
@@ -57,6 +66,10 @@ public class Ponuda extends JFrame {
 
 		setVisible(true);
 	}
+	
+	/**
+	 * Metoda koja kreira sve komponente GUI-a
+	 */
 
 	private void createElements() {
 		// TODO Auto-generated method stub
@@ -148,6 +161,11 @@ public class Ponuda extends JFrame {
 
 	}
 
+	
+	/**
+	 * Metoda kojom se iz baze podataka iz tablice brodovi puni
+	 * JTable s podatcima o svim dostupnim brodovima.
+	 */
 	private void populateList() {
 
 		list.setModel(new DefaultTableModel(new Object[][] {},
@@ -166,6 +184,18 @@ public class Ponuda extends JFrame {
 
 	}
 
+	/**
+	 * Metoda kojom dodajemo ActionListenere na JButtone.
+	 * 
+	 * bntOdaberi -> slika odabranog broda se u JTableu nalazi na poziciji 6, iscitava se
+	 * i kreira se novi ImageIcon koji se postavlja na lblZaSlikuBroda.
+	 * 
+	 * btnIzadi -> gasi trentuni prozor i otvara UserMainFrame.
+	 * 
+	 * btnRezerviraj -> u bazu podataka upisuje koji korisnik je rezervirao
+	 * koji brod.
+	 * 
+	 */
 	private void activateElements() {
 
 		btnOdaberi.addActionListener(new ActionListener() {
@@ -245,6 +275,12 @@ public class Ponuda extends JFrame {
 		});
 
 	}
+	
+	/**
+	 * Metoda kojom kreiramo Date jednostavnog yyyy-MM-dd formata
+	 * @param date
+	 * 
+	 */
 	
 	 public static Date parseDate(String date) {
 	     try {
